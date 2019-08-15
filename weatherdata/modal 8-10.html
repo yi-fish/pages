@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        @media only screen and (min-width: 320PX) and (max-width: 360PX) {
+            html {
+                font-size: 13.65px
+            }
+        }
+
+        @media only screen and (min-width: 360PX) and (max-width: 375PX) {
+            html {
+                font-size: 15.36px
+            }
+        }
+
+        @media only screen and (min-width: 375PX) and (max-width: 390PX) {
+            html {
+                font-size: 16px
+            }
+        }
+
+        @media only screen and (min-width: 390PX) and (max-width: 414PX) {
+            html {
+                font-size: 16.64px
+            }
+        }
+
+        @media only screen and (min-width: 414PX) and (max-width: 640PX) {
+            html {
+                font-size: 17.664px
+            }
+        }
+
+        @media screen and (min-width: 640PX) {
+            html {
+                font-size: 27.31px
+            }
+        }
+
+        .foot {
+            bottom: 0;
+            position: fixed;
+            width: 100%;
+            padding: 1px;
+        }
+
+        .tag {
+            background-color: #FFF;
+            list-style: none;
+            /*  margin-top: 7px;*/
+            margin-bottom: 2px;
+            font-size: 10px;
+            padding: 16px;
+            /* border-radius: 5px;*/
+        }
+
+        .btn {
+            padding: 0 6px;
+            font-size: inherit;
+            border: 1px solid transparent;
+        }
+
+        .placeholder-view {
+
+            background-color: #FFF;
+            height: 15px;
+            text-align: center;
+        }
+
+        h5 {
+            margin-top: 1px;
+            margin-bottom: 1px;
+        }
+
+    </style>
+</head>
+<body style="background-attachment:fixed; background-color:#F2F2F2;">
+<div>
+    <div id="main" style="margin-top: 1px;" class="main">
+        <h5 style="text-align: center">我的地址列表</h5>
+        <div class="tag">
+            <div>
+                <div style="display: flex">
+                    <p style="margin-right: 8px">王大锤</p>
+                    <p>1286364819241892</p>
+                </div>
+                <p>【默认】陕西省西安市雁塔区角度来说卡家的</p>
+            </div>
+            <div style="border: 1px solid silver;margin-bottom: 2px"></div>
+            <div style="height: 25px">
+                <button style="float: right;" class="edit btn btn-primary">编辑</button>
+                <!-- data-toggle="modal" data-target="#myModal"-->
+                <button style="float: right;margin-right: 10px" class="del btn btn-warning">删除</button>
+            </div>
+        </div>
+        <div class="tag">
+            <div>
+                <div style="display: flex">
+                    <p style="margin-right: 8px">王大锤</p>
+                    <p>1286364819241892</p>
+                </div>
+                <p>陕西省西安市雁塔区角度来说卡家的</p>
+            </div>
+            <div style="border: 1px solid silver;margin-bottom: 2px"></div>
+            <div style="height: 25px">
+                <button style="float: right;" class="edit btn btn-primary">编辑</button>
+                <!-- data-toggle="modal" data-target="#myModal"-->
+                <button style="float: right;margin-right: 10px" class="del btn btn-warning">删除</button>
+            </div>
+        </div>
+        <div class="tag">
+            <div>
+                <div style="display: flex">
+                    <p style="margin-right: 8px">王大锤</p>
+                    <p>1286364819241892</p>
+                </div>
+                <p>陕西省西安市雁塔区角度来说卡家的</p>
+            </div>
+            <div style="border: 1px solid silver;margin-bottom: 2px"></div>
+            <div style="height: 25px">
+                <button style="float: right;" class="edit btn btn-primary">编辑</button>
+                <!-- data-toggle="modal" data-target="#myModal"-->
+                <button style="float: right;margin-right: 10px" class="del btn btn-warning">删除</button>
+            </div>
+        </div>
+    </div>
+    <!-- 按钮触发模态框-->
+    <div class='placeholder-view'>
+        <button data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg foot" id="new"
+                style="width: 80%;position: sticky">+ 新建地址
+        </button>
+    </div>
+    <!-- 1  模态框（Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: gold">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">输入信息</h4>
+                </div>
+                <div class="modal-body">
+                    <label>
+                        <p><input type="text" id="name" placeholder="请输入姓名：" style="font-style: normal"></p>
+                        <p><input type="tel" name="usrtel" id="phonenum" placeholder="请输入电话："></p>
+                        <p><input type="text" id="address" placeholder="请输入地址："></p>
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">提交更改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let $main;
+    let $mainparent = $("#main");
+    $(function () {
+        //编辑地址       HTML
+        /*    $(".edit").click(function () {                    //修改地址
+                //  $('#myModal').modal('show');
+                var tds = $(this).parent().parent().children().find("p");
+                var name = tds.eq(0).text();
+                var phonenum = tds.eq(1).text();
+                var address = tds.eq(2).text();
+                $('#name').val(name);
+                $('#phonenum').val(phonenum);
+                $('#address').val(address);
+
+                /!*   把tds保存到myModal的data$(selector).data(name,value)   name	必需。规定要设置的数据的名称。 value	必需。规定要设置的数据的值。  *!/
+                $('#myModal').data({'tds': tds});
+                console.log(tds);            //sange  Pjiedian
+                console.log(tds.text());         //p  数据
+            });*/
+        //删除
+        /*     $(".del").click(function () {
+                 $(this).parent().parent().remove();
+                 //$(this).parents(".tag").remove();
+             });
+     */
+
+        //编辑地址
+        //jQuery 使用on绑定动态生成的元素时，不能直接用该对象操作，而是选择其非动态生成的父节点然后再找到本身才能达到效果。
+        $(".main").on('click', ".edit", function () {                    //修改地址
+            $("#myModalLabel").text("修改地址");
+            var tds = $(this).parent().parent().children().find("p");
+            var name = tds.eq(0).text();
+            var phonenum = tds.eq(1).text();
+            var address = tds.eq(2).text();
+            $('#name').val(name);
+            $('#phonenum').val(phonenum);
+            $('#address').val(address);
+            $('#myModal').modal('show');
+            /*   把tds保存到myModal的data$(selector).data(name,value)   name	必需。规定要设置的数据的名称。 value	必需。规定要设置的数据的值。  */
+            $('#myModal').data({'tds': tds});
+        });
+
+        //删除
+        $(".main").on('click', ".del", function () {
+            $(this).parent().parent().remove();
+        });
+
+        //点击模态框的提交按钮
+        $("body .modal-content button:eq(2)").click(function () {
+
+            //1. 取模态框中数据
+            let name = $("#name").val(), phonenum = $("#phonenum").val(), address = $("#address").val();
+
+            //2. 赋值
+            var tds = $("#myModal").data('tds');
+
+            if (tds === undefined) {                //模态框中数据为空
+                $main = `<div class="tag">
+                        <div>
+                            <div style="display: flex">
+                                <p style="margin-right: 8px">${name}</p>
+                                <p style="font-family: cursive;">${phonenum}</p>
+                            </div>
+                            <p>${address}</p>
+                        </div>
+                      <div style="border: 1px solid silver;margin-bottom: 2px"></div>
+                        <div style="height: 25px">
+                            <button style="float: right;" class="edit btn btn-primary">编辑</button>
+                            <button style="float: right;margin-right: 10px" class="del btn btn-warning">删除</button>
+                        </div>
+                        </div>`;
+                $mainparent.append($main);
+            } else {                                //编辑地址         data-toggle="modal" data-target="#myModal"
+                tds.eq(0).text(name);
+                tds.eq(1).text(phonenum);
+                tds.eq(2).text(address);
+                $('#myModal').removeData('tds');   //清空
+            }
+        });
+
+        //新建地址按钮-清空输入框
+        $("#new").click(function () {
+            $("#myModalLabel").text("新增地址");
+            $('#myModal :input').val('')
+        })
+
+    });
+</script>
+</body>
+</html>

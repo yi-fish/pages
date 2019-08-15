@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>weather</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://vuejs.org/js/vue.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="weather-data.js"></script>
+    <style>
+       /* .top-half ul{
+            list-style: none;
+        }
+        */
+       @media (min-width: 1200px){
+           .container {
+               width: 100%;;
+           }
+       }
+
+       @media (min-width: 992px){
+               .container {
+                   width: 100%;
+               }
+           }
+
+       @media (min-width: 400px){
+                   .container {
+                       width: 100%;
+                   }
+               }
+
+
+       .bottom-half li{
+            list-style: none;
+            padding-left: 20px;
+            text-align: justify-all;
+            display: flex;
+            flex-direction: row;
+           /* justify-content: space-around;*/
+            position: relative;
+            right: 50px;
+        }
+
+        .header{
+            max-width: 100%;
+            min-width: 400px;
+        }
+        .main{
+            max-width: 100%;
+            min-width: 400px;
+        }
+       .main li{
+           height: 50px;
+           padding: 30px;
+
+       }
+        .main img{
+            height: 28px;
+        }
+        .bord{
+            border: none;
+            background-color:#4BABF5 ;
+            padding: 5px;
+            border-radius: 3px;
+        }
+    </style>
+    <script>
+        let j;
+        let arr=weatherData.HeWeather;
+
+
+        /*  if (weatherData.HeWeather[0].basic.lat==='34.285000'&&weatherData.HeWeather[0].basic.lon==='108.969000')
+    {
+        j=0;
+    }
+    else if(weatherData.HeWeather[1].basic.lat==='38.285000'&&weatherData.HeWeather[1].basic.lon==='112.969000')
+    {
+        j=1;
+    }*/
+        if (arr[0].basic.lat==='34.285000'&&arr[0].basic.lon==='108.969000') {
+            j =0;
+        }
+        function  change() {
+            if(j===0) {   j=1; }
+            else if (j===1){   j=0; }
+
+            console.log(j);
+            console.log( arr[j].daily_forecast[0].cond.code_n);
+            console.log(arr);
+
+            document.getElementById("local").innerHTML=arr[j].basic.city;
+            document.getElementById("min").innerHTML=arr[j].daily_forecast[0].tmp.min;
+            document.getElementById("max").innerHTML=arr[j].daily_forecast[0].tmp.max;
+            document.getElementById("cond").innerHTML=arr[j].daily_forecast[0].cond.txt_d;
+
+
+            document.getElementById("tmp").innerHTML=`<li style="list-style: none;text-align: right;">当前气温： ${arr[j].now.tmp} °C</li>`;
+            document.getElementById("wind").innerHTML=`<li>${arr[j].now.wind.dir} ${arr[j].now.wind.sc}级</li>`;
+            document.getElementById("aqi").innerHTML=`<span class="bord">空气质量指数：${arr[j].aqi.city.aqi} ${arr[j].aqi.city.qlty}</span>`;
+
+
+            for(let i=0;i<7;i++){
+
+                switch(i){
+                    case 0:document.getElementById("rotate").innerHTML=`"<li>"+<img src="32.png" style="height: 28px;">+"</li>>"`;break;
+                    case 1:document.getElementById("rotate").innerHTML=`"<li>"+<img src="28.png" style="height: 28px;">+"</li>>"`;break;
+                    case 2:document.getElementById("rotate").innerHTML=`"<li>"+<img src="37.png" style="height: 28px;">+"</li>>"`;break;
+                    case 3:document.getElementById("rotate").innerHTML=`"<li>"+<img src="26.png" style="height: 28px;">+"</li>>"`;break;
+                    case 4:document.getElementById("rotate").innerHTML=`"<li>"+<img src="32.png" style="height: 28px;">+"</li>>"`;break;
+                    case 5:document.getElementById("rotate").innerHTML=`"<li>"+<img src="28.png" style="height: 28px;">+"</li>>"`;break;
+                    case 6:document.getElementById("rotate").innerHTML=`"<li>"+<img src="28.png" style="height: 28px;">+"</li>>"`;break;
+                }
+                document.createElement(li);
+                li.setAttribute("type","button");
+                li.appendChild(ul.length);
+                if (arr[j].daily_forecast[i].cond.txt_d===arr[j].daily_forecast[i].cond.txt_n){
+                    document.getElementById("rotate").innerHTML=`<i  style="font-style: normal;">
+                                        ${arr[j].daily_forecast[i].cond.txt_d}</i><br><br>`;
+                } else{
+                    document.getElementById("rotate").innerHTML=`<i  style="font-style: normal;">
+                                        ${arr[j].daily_forecast[i].cond.txt_d}转${arr[j].daily_forecast[i].cond.txt_n}</i><br><br>`;
+                }
+
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+
+
+<div class="header">
+    <div class="container" >
+        <div class="row" style="color: white;
+                display: flex;flex-direction: row;
+                justify-content: space-between;background:#1E96F2; ">
+            <div class="col-xs-6">
+                <span style="font-size: 18px" id="local">北京</span>
+                <span style="font-size: 18px;position: relative;left: -4px">天气</span>
+                <span id="demo" style="display: inline;font-size: 13px;margin-top: 6px">
+                        <button onclick="change()" style="background-color:#1E96F2; ">[切换]</button></span>
+                <div >
+                    <script>
+                        switch (arr[j].daily_forecast[0].cond.code_n) {
+                            case '100':
+                                document.write(`<img src="32.png" style="width:150px">`);
+                                break;
+                            case '101':
+                                document.write(`<img src="28.png" style="width:150px">`);
+                                break;
+                            case '104':
+                                document.write(`<img src="26.png" style="width:150px">`);
+                                break;
+                            case '305':
+                                document.write(`<img src="64.png" style="width:150px">`);
+                                break;
+                            default:
+                                break;
+                        }
+                    </script>
+                </div>
+
+            </div>
+            <div class="col-xs-6">
+                <ul style="list-style: none;text-align: right; margin: 10px; ">
+                    <li id="cond"></li>
+                    <li><i style="font-style: normal;font-size:40px;" id="min"></i>~
+                        <i style="font-style: normal;font-size:40px;" id="max"></i>
+                        <i style="font-style: normal;font-size:40px;">°C</i></li>
+                    <li style="list-style: none;text-align: right;" id="tmp">
+                        <script>
+                            document.getElementById("tmp").innerHTML=`<span style="list-style: none;text-align: right;">当前气温： ${arr[j].now.tmp} °C</span>`;
+                        </script>
+                    </li>
+                    <li id="wind">
+                        <script>
+                            document.getElementById("wind").innerHTML=`<span>${arr[j].now.wind.dir} ${arr[j].now.wind.sc}级</span>`;
+                        </script>
+                    </li>
+                    <li ><span class="bord" id="aqi">
+                       <script>
+                           document.getElementById("aqi").innerHTML=`<span class="bord">空气质量指数：${arr[j].aqi.city.aqi} ${arr[j].aqi.city.qlty}</span>`;
+                       </script>
+                   </span></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="main">
+    <h4> 7日天气预报</h4>
+    <div class="container" >
+
+        <div class="row" style="color: black;">                                                   <!--   display: flex;flex-direction: row;
+                                                                                        justify-content: space-between;-->
+            <div class="col-xs-4">
+                <ul class="bottom-half" style="position: relative;left: -49px">
+
+                    <script>
+                        for(let i=0;i<5;i++){
+                            document.write(`<i style="display: inline-block;height: 29px;font-style: normal;">
+${arr[j].daily_forecast[i].date.substring(5,7)}/${arr[j].daily_forecast[i].date.substring(8,10)} </i>`);
+
+                            switch(i){
+                                case 0:document.write(`今日<br><br>`);break;
+                                case 1:document.write(`明日<br><br>`);break;
+                                case 2:document.write(`周三<br><br>`);break;
+                                case 3:document.write(`周四<br><br>`);break;
+                                case 4:document.write(`周五<br><br>`);break;
+                                case 5:document.write(`<div style="color:#EB6767;display: inline; ">周六</div><br><br>`);break;
+                                case 6:document.write(`<div style="color:#EB6767;display: inline; ">周日</div><br><br>`);break;
+                            }
+                        }
+                        for(let i=5;i<7;i++){
+                            document.write(`<i style="display: inline-block;height: 29px;font-style: normal;color: #EB6767;">
+${arr[j].daily_forecast[i].date.substring(5,7)}/${arr[j].daily_forecast[i].date.substring(8,10)} </i>`);
+                            switch(i){
+                                case 5:document.write(`<div style="color:#EB6767;display: inline; ">周六</div><br><br>`);break;
+                                case 6:document.write(`<div style="color:#EB6767;display: inline; ">周日</div><br><br>`);break;
+                            }
+                        }
+                    </script>
+                </ul>
+            </div>
+
+            <div class="col-xs-4">
+              <!--  <ul class="bottom-half" id="rotate">-->
+                <div style="display: table;" id="rotate">
+
+
+
+                    <script>
+                        for(let i=0;i<7;i++){
+                            switch(i){
+                                case 0:document.write(`<span><img src="32.png" style="height: 28px;"></span>`);break;
+                                case 1:document.write(`<span><img src="28.png" style="height: 28px;"></span>`);break;
+                                case 2:document.write(`<span><img src="37.png" style="height: 28px;"></span>`);break;
+                                case 3:document.write(`<img src="26.png" style="height: 28px;">`);break;
+                                case 4:document.write(`<img src="32.png" style="height: 28px;">`);break;
+                                case 5:document.write(`<img src="28.png" style="height: 28px;">`);break;
+                                case 6:document.write(`<img src="28.png" style="height: 28px;">`);break;
+                                }
+                                if (arr[j].daily_forecast[i].cond.txt_d===arr[j].daily_forecast[i].cond.txt_n){
+                                    document.write(`<span><i  style="font-style: normal;">
+                                        ${arr[j].daily_forecast[i].cond.txt_d}</i></span><br><br>`);
+                                } else{
+                                    document.write(`<span><i  style="font-style: normal;">
+                                        ${arr[j].daily_forecast[i].cond.txt_d}转${arr[j].daily_forecast[i].cond.txt_n}</i></span><br><br>`);
+                                }
+                        }
+                    </script>
+                </div>
+               <!-- </ul>-->
+            </div>
+
+            <div class="col-xs-4">
+                <ul class="bottom-half" style="position: relative;left: -30px;text-align: right">
+
+                    <script>
+                        for(let i=0;i<7;i++){
+                            document.write(`<i style="font-style: normal;font-size:20px;color: #14B610; ">${arr[j].daily_forecast[i].tmp.min}</i>
+                            ~
+                            <i style="font-style: normal;font-size:20px;color: #FF800F; ">${arr[j].daily_forecast[i].tmp.max}°C</i><br><br>`);
+                                                    }
+                    </script>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>  document.getElementById("local").innerHTML=arr[j].basic.city; </script>
+<script>  document.getElementById("min").innerHTML=arr[j].daily_forecast[0].tmp.min; </script>
+<script>  document.getElementById("max").innerHTML=arr[j].daily_forecast[0].tmp.max; </script>
+<script>  document.getElementById("cond").innerHTML=arr[j].daily_forecast[0].cond.txt_d; </script>
+<!--
+<p id="loca">点击按钮获取您当前坐标（可能需要比较长的时间获取）：</p>
+<button onclick="getLocation()">点我</button>
+<script>
+    var x=document.getElementById("loca");
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            alert( "jjkkkll");
+
+        }
+        else
+        {
+            x.innerHTML="该浏览器不支持获取地理位置。";
+        }
+    }
+
+    function showPosition(position)
+    {
+        console.log( position.coords.latitude );
+        alert( "jjkkkll");
+      /* alert("纬度: " + position.coords.latitude +
+           "<br>经度: " + position.coords.longitude);*/
+    }
+
+    var j =0;
+    function  change() {
+        if(j===0) { j=1; console.log(j)}
+        else if (j===1){  j=0;}
+    }
+</script>
+-->
+
+</body>
+</html>
