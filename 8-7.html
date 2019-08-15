@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>8-7</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="patient.js"></script>
+    <style>
+      /*  @media screen and (max-width: 960px){
+            body{
+                background: #000;
+            }
+        }*/
+        /*  京东 m.jd.com */
+        @media only screen and (min-width: 320PX) and (max-width:360PX) {
+            html {
+                font-size:13.65px
+            }
+        }
+        @media only screen and (min-width: 360PX) and (max-width:375PX) {
+            html {
+                font-size:15.36px
+            }
+        }
+        @media only screen and (min-width: 375PX) and (max-width:390PX) {
+            html {
+                font-size:16px
+            }
+        }
+        @media only screen and (min-width: 390PX) and (max-width:414PX) {
+            html {
+                font-size:16.64px
+            }
+        }
+        @media only screen and (min-width: 414PX) and (max-width:640PX) {
+            html {
+                font-size:17.664px
+            }
+        }
+        @media screen and (min-width: 640PX) {
+            html {
+                font-size:27.31px
+            }
+        }
+        .toolbar{
+            padding-bottom: 23px;
+         }
+        .toolbar ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding-left: 0px;
+            margin-bottom: 15px;
+        }
+        .toolbar li{
+            display:inline;
+            color: black;
+        }
+       .selected{
+            color: blue  !important;
+          /*  text-decoration: none;*/
+            border-bottom: 2px solid cornflowerblue;
+        }
+       /* .unselected {
+
+            text-decoration: none;
+            border-bottom: none;
+        }*/
+        .main{
+
+        }
+        .switch{
+            z-index: 2;
+            background-color: #F2F2F2;
+        }
+        .tag{
+            background-color:#FFFF;
+            list-style: none;
+            margin-top: 7px;
+            margin-bottom: 7px;
+            font-size: 10px;
+            padding: 16px;
+            border-radius: 5px;
+        }
+        .red{
+            color: red;
+        }
+        .none{
+            display: none;
+        }
+        ::-webkit-scrollbar{
+            display:none;
+        }
+       /* .page{
+            background-color: #F2F2F2;
+            background-repeat: repeat-y;
+            min-width: 313px;
+          !*  height: -webkit-fill-available;*!
+            background-attachment:fixed
+        }*/
+
+    </style>
+</head>
+<body  style="background-attachment:fixed; background-color:#F2F2F2;">
+<div class="page">
+    <div class="toolbar">
+        <ul class="switch">
+            <li class="selected">&#12288;全部&#12288;</li>
+            <li>&#12288;待审核&#12288;</li>
+            <li>&#12288;待付款&#12288;</li>
+            <li>&#12288;待收货&#12288;</li>
+            <li>&#12288;已收货&#12288;</li>
+        </ul>
+    </div>
+    <div class="content" style="padding: 5px;">
+        <div id="all">
+        </div>
+    <!--    <div id="waitconfirm"  style="display: none">
+        </div>
+        <div id="waitpay"  style="display: none">
+
+        </div>
+        <div id="waitreceive"  style="display: none">
+
+        </div>
+        <div id="end"  style="display: none">
+
+        </div>-->
+    </div>
+</div>
+<script>
+    let $all;   //定义变量名
+    let $allparent = $('#all');
+    //渲染
+    function filt(messageList) {
+        $("#all").html("");
+        for(let c=0;c<messageList.length;c++){
+            $all = `<div class="tag">
+                <div style="display: flex;flex-direction: row;justify-content: space-between">
+                    <div id="fir">
+                       <span><img src="作业.png" style="width: 50px;height: 50px;float: left;margin-left: 8px;margin-right: 8px"></span>
+                        <span>${messageList[c].name}&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;</span><br>
+                        <span>${messageList[c].details.sex} ; ${messageList[c].details.age}</span><br>
+                        <span>${messageList[c].details.time}</span>
+                    </div>
+                    <div style="float: right">
+                        <span class="red">${messageList[c].details.state.state_n}</span><br>
+                        <span>&#12288;</span><br>
+                        <span>￥78.0</span>
+                    </div>
+                </div>
+                <hr style="margin: 4px;border-top: 2px solid #eee">
+                <div style="height: 80px">
+                    <span>病情描述:</span><br><br>
+                    <span>是否代煎:</span><br>
+                    <button style="float: right" class="none" id="non">查看物流</button>
+                </div>
+            </div>`;
+            $allparent.append($all);
+          //  let $parent = $('#all');
+           /* console.log(messageList[c].details.state.state_n);
+            console.log($parent[0].children[c].children[2].children[5])*/
+            if (messageList[c].details.state.state_n === "待收货")
+            {
+                $allparent[0].children[c].children[2].children[5].setAttribute('class','');
+            }
+                //console.log($parent[0].children[i].children[2].children[5])
+                        /*     if (messageList[i].details.state.state_n === "待收货")
+                    {
+
+                        console.log($parent[0].children[1].children[2].children[5]);
+                        $parent[0].children[i].children[2].children[5].setAttribute('class','');
+                        //window.onload=console.log($parent[0].children[2].children[5]);
+                        console.log($parent[0].children[1].children[2].children[5]);
+                    }
+*/
+                         /* for (let j=0;j<messageList.length;j++){
+                    if (messageList[j].details.state.state_n === "待收货")
+                    {
+
+
+                     //   window.onload=console.log($parent[j].children[2].children[5]);
+                     //   $parent[j].children[2].children[5].removeAttr("none");
+                        /!*
+                        let da = [];
+                        da.push(messageList[j]);
+                        *!/
+                        //console.log(p.parent);
+                       // $("p :parent").removeAttr("class");
+                    }
+                }*/
+                         /*   if(messageList[c].details.state.state_n ==='待收货'){
+                 console.log($parent[0]);
+                 $parent[0].children[c].children[2].children[2].setAttribute('style','display:block')
+ //$('.lookAdd').css("display","block")
+             }*/
+        }
+    }
+    window.onload=filt(messageList);
+</script>
+<script>
+    //点击获取li数据
+    $(function() {
+        $(".switch  li").click(function () {
+            var index = $(this).index();
+            var divShow = $(".content").children("div");     /!*每个li下属的div*!/
+                if (!$(this).hasClass("selected")) {          /!*利用selected进行判断*!/
+                    $($(this)).addClass("selected");
+                    console.log(this);                           /!*li标签的顺序和div的顺序是对!*当前对象设置class属性*!/
+                    $(this).add("selected");                         /!*移除其他同级元素属性*!/
+                    $($(this)).siblings("li").removeClass("selected");  /!*展示当前li对应的div内容,利用方法显示和隐藏*!/
+                   /* $($(this)).siblings("li").addClass("unselected");
+                    $(divShow[index]).show();                       /!*隐藏同级元素*!/
+                    $(divShow[index]).siblings("div").hide();*/
+                }
+            const s = ["全部","待审核","待付款","待收货","已收货"];
+                const data2 =messageList;
+            let data = data2.filter(function (item) { //过滤出选中的城市数据
+                console.log(item.details.state.state_n === s[index]);
+                return item.details.state.state_n === s[index];
+            });
+            console.log(data);
+            console.log(data2);
+            console.log(index);
+                if (index==0){
+                    filt(messageList);
+                }
+                else if (index !=0){
+                    filt(data);
+                }
+            }
+        )
+    }
+    );
+</script>
+</body>
+</html>
