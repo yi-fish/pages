@@ -124,17 +124,6 @@
     <div class="content" style="padding: 5px;">
         <div id="all">
         </div>
-    <!--    <div id="waitconfirm"  style="display: none">
-        </div>
-        <div id="waitpay"  style="display: none">
-
-        </div>
-        <div id="waitreceive"  style="display: none">
-
-        </div>
-        <div id="end"  style="display: none">
-
-        </div>-->
     </div>
 </div>
 <script>
@@ -173,36 +162,6 @@
             {
                 $allparent[0].children[c].children[2].children[5].setAttribute('class','');
             }
-                //console.log($parent[0].children[i].children[2].children[5])
-                        /*     if (messageList[i].details.state.state_n === "待收货")
-                    {
-
-                        console.log($parent[0].children[1].children[2].children[5]);
-                        $parent[0].children[i].children[2].children[5].setAttribute('class','');
-                        //window.onload=console.log($parent[0].children[2].children[5]);
-                        console.log($parent[0].children[1].children[2].children[5]);
-                    }
-*/
-                         /* for (let j=0;j<messageList.length;j++){
-                    if (messageList[j].details.state.state_n === "待收货")
-                    {
-
-
-                     //   window.onload=console.log($parent[j].children[2].children[5]);
-                     //   $parent[j].children[2].children[5].removeAttr("none");
-                        /!*
-                        let da = [];
-                        da.push(messageList[j]);
-                        *!/
-                        //console.log(p.parent);
-                       // $("p :parent").removeAttr("class");
-                    }
-                }*/
-                         /*   if(messageList[c].details.state.state_n ==='待收货'){
-                 console.log($parent[0]);
-                 $parent[0].children[c].children[2].children[2].setAttribute('style','display:block')
- //$('.lookAdd').css("display","block")
-             }*/
         }
     }
     window.onload=filt(messageList);
@@ -218,9 +177,6 @@
                     console.log(this);                           /!*li标签的顺序和div的顺序是对!*当前对象设置class属性*!/
                     $(this).add("selected");                         /!*移除其他同级元素属性*!/
                     $($(this)).siblings("li").removeClass("selected");  /!*展示当前li对应的div内容,利用方法显示和隐藏*!/
-                   /* $($(this)).siblings("li").addClass("unselected");
-                    $(divShow[index]).show();                       /!*隐藏同级元素*!/
-                    $(divShow[index]).siblings("div").hide();*/
                 }
             const s = ["全部","待审核","待付款","待收货","已收货"];
                 const data2 =messageList;
