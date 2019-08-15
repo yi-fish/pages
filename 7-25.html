@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js prime</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <style>
+         div { color:blue; }
+         p { color:gold; margin:0; }
+         span { color:red; }
+     </style>-->
+    <!-- <script type="text/javascript">
+         function is1000prime(){
+         var flag;
+         for(var i = 2; i<1000; i++){
+             flag = true;
+             for(var j = 2; j<i; j++){
+                 if(i % j == 0){
+                     flag = false;
+                 }
+             }
+             if(flag){
+                 console.log(i);
+             }
+         }}
+
+
+       /*  <input type="text" id="inps"><br>
+             <button onclick="isleapyear()">是否闰年</button><br><br>
+ */
+
+         var inps = document.getElementById("input");
+         function isleapyear() {
+             let year=document.getElementById("inps").value;
+             let cond1=year%4==0;
+             let cond2=year%100!=0;
+             let cond3=year%400==0;
+             let cond=cond1&&cond2||cond3;
+             if(cond){
+                 alert(year + " isleapyear")
+             }
+             else {  alert(year + " is not leapyear")
+
+             }
+         }
+
+
+
+         var  points= [ ];
+         var p = document.getElementById("input");
+         function sortnumber() {
+                      let num=document.getElementById("p").value;
+                      points.push(num);
+                      points.sort(function(a,b){return a-b});
+                      var x=document.getElementById("demo");
+                      x.innerHTML=points;
+         }
+
+
+
+         let arr=[1,4,2,3,6,5,7,8];
+         function quicksort(arr) {
+             if (arr.length<=1){
+                 return arr;
+             }
+             let left=[];
+             let right=[];
+             let midnum=Math.floor(arr.length/2);
+             let mid=arr.splice(midnum ,1);
+             console.log(arr)
+             for (let k=0;k<arr.length;k++){
+                 if (arr[k]<mid){
+                     left.push(arr[k]);
+                     console.log(left)
+                 }
+                 else{
+                     right.push(arr[k]);
+                     console.log(right)
+                 }
+             }
+             arr=quicksort(left).concat(mid,quicksort(right));
+             return arr;
+
+         }
+         console.log(quicksort(arr));
+
+
+         function calculator() {
+             let num=document.getElementById("pre").value;
+             let num1,num2;
+             if(num<=1500) {
+                 num1=(num-1455)*0.03-0;
+                 num2=(num-num1);
+                 alert("税前收入: "+num +"元"+ "\n" + "缴税金额: "
+                     + num1 +"元"+ "\n" + "税后收入: " + num2+"元" );
+
+             }
+             else if(1500<num&&num<4500){
+                 console.log(num)
+                 num1=(num-1455)*0.03-5;
+                 num2=(num-num1);
+                 alert("税前收入: "+num +"元"+ "\n" + "缴税金额: "+ num1 +"元"+ "\n" + "税后收入: " + num2+"元" );
+                 console.log(num1)
+
+             }
+             else if(4500<num&&num<9000){
+                 num1=(num-3500)*0.2-555;
+                 num2=(num-num1);
+                 alert("税前收入: "+num +"元"+ "\n" + "缴税金额: "+ num1 +"元"+ "\n" + "税后收入: " + num2+"元" );
+                 console.log(num1)
+
+             }
+             else if(9000<num&&num<35000){
+                 num1=(num-1455)*0.3-105;
+                 num2=(num-num1);
+                 alert("税前收入: "+num +"元"+ "\n" + "缴税金额: "+ num1 +"元"+ "\n" + "税后收入: " + num2+"元" );
+                 console.log(num1)
+
+             }
+             else if(35000<num&&num<55000){
+                 num1=(num-3500)*0.3-2755;
+                 num2=(num-num1);
+                 alert("税前收入: "+num +"元"+ "\n"
+                     + "缴税金额: "+ num1 +"元"+ "\n" + "税后收入: " + num2+"元" );
+                 console.log(num1)
+
+
+             }
+             else if(55000<num&&num<80000){
+                 num1=(num-3500)*0.35-5505;
+                 num2=(num-num1);
+                 alert("税前收入: "+num +"元"+ "\n" + "缴税金额: "+ num1 +"元"+ "\n" + "税后收入: " + num2+"元" );
+                 console.log(num1)
+             }
+             else if(80000<num){
+                 num1=(num-1455)*0.45-13505;
+                 num2=(num-num1);
+                 alert("税前收入: "+num +"元"+ "\n" + "缴税金额: "+ num1 +"元"+ "\n" + "税后收入: " + num2+"元" );
+                 console.log(num1)
+             }
+         }
+      </script>-->
+
+    <style>
+        body
+        {
+            
+           /* background-image:url("http://pic.kekenet.com/Read/UploadFiles_9483/201108/2011081710525495.jpg");
+            background-repeat:no-repeat;
+            background-position:right top;
+            margin-right:100px;
+            background-attachment:fixed;
+            background-size: 100%*/
+        }
+        button{
+            color: #fff;
+            background-color:#69807947;
+            border-color: #2e6da4;
+            width: 100px;
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div style="    background-color: cadetblue">
+    <!--<h4 style="text-align: center;position: fixed;background: silver;width: 100%;height: 50px;padding: 15px;margin: 0px">函数方法://pop,shift,unshift,splice,slice,forEach,filter,map,some,every</h4>
+    -->
+    <h4 style="z-index: 2;text-align: center;position: fixed;margin: 0px;background-color:cadetblue;width: 100%;line-height: 50px;min-width: 570px ">函数方法://pop,shift,unshift,splice,slice,forEach,filter,map,some,every</h4>
+
+    <p  >&#12288;</p> <p style=" margin: 0px" >&#12288;</p>
+
+    <p id="1" class="i7" style="position: relative"></p>
+    <p id="1`"></p>
+    <button onclick="po()">pop</button>
+    <hr>
+    <p id="2" class="i7"></p>
+    <p id="2`"></p>
+    <button onclick="sh()">shift</button>
+    <hr>
+    <p id="3" class="i7"></p>
+    <p id="3`"></p>
+    <button onclick="uns()">unshift</button>
+    <hr>
+    <p id="4" class="i7"></p>
+    <button onclick="spl()">splice</button>
+    <hr>
+    <p>www.abcdefgh.com!</p>
+    <p id="5" class="i7">&#12288;</p>
+    <p id="5`">&#12288;</p>
+    <button onclick="sli()">slice</button>
+    <hr>
+    <p class="i7">计算数组所有元素相加的和[65, 44, 12, 4]</p>
+    <p>数组元素总和：<span id="a"></span></p>
+    <button onclick="numbers.forEach(my6)">foreach</button>
+    <hr>
+    <p id="i80" style="width: 400px;text-align: center"></p>
+    <p id="i81" style="width: 400px;text-align: center"></p>
+    <p id="i82" style="width: 400px;text-align: center"></p>
+    <hr>
+    <p class="i7"> numbers = [65, 44, 12, 4];</p>
+    <p> >=54</p>
+    <p id="8">&#12288;</p>
+    <button onclick="mysome()">some</button>
+    <hr>
+    <p id="9">&#12288;</p>
+    <button onclick="myevery()">every</button>
+    <hr>
+</div>
+<script>
+    let arr = ["Banana", "Orange", "Apple", "Mango"];
+
+    //移除最后一个数组元素
+    function po() {
+        let a = arr.pop();
+        var x = document.getElementById("1");
+        x.innerHTML = arr;
+        document.getElementById("1`").innerHTML = '删除的元素是：' + a;
+    }
+
+    po();
+
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+    //删除数组的第一个元素
+    function sh() {
+        let a = fruits.shift();
+        var x = document.getElementById("2");
+        x.innerHTML = fruits;
+        document.getElementById("2`").innerHTML = '删除的元素是：' + a;
+    }
+
+    sh();
+
+    //将新项添加到数组起始位置:
+    function uns() {
+        let a = fruits.unshift("Lemon", "Pineapple");
+        var x = document.getElementById("3");
+        x.innerHTML = fruits;
+        document.getElementById("3`").innerHTML = '添加的元素是：' + a;  //返回操作数组的长度。
+    }
+
+    uns();
+
+    //在数组下标1,2之间添加元素
+    function spl() {
+        fruits.splice(2, 0, "Ln", "K");
+        var x = document.getElementById("4");
+        x.innerHTML = fruits;
+    }
+
+    spl();
+
+    //使用 slice() 截取字符串
+    function sli() {
+        var str = "www.abcdefgh.com!";
+        var x = document.getElementById("5");
+        var y = document.getElementById("5`");
+        x.innerHTML = str.slice(4);
+        y.innerHTML = str.slice(4, 7);
+    }
+
+    var sum = 0;
+    var numbers = [65, 44, 12, 4];
+
+    function my6(item) {
+        sum += item;
+        a.innerHTML = sum;
+    }
+
+    $(document).ready(function () {
+        $("p").filter(".i7").css("background-color", "gold");   //class="i7" 的p 添加样式
+
+
+        var arr = ["adeded", "bdedede", "cded", "dde", "ede"];
+        $("#i80").text(arr.join("|||"));
+        arr = $.map(arr, function (n, i) {         //n:当前元素的值   i:当前元素的索引值 console.log(n,i)
+            return (n.toUpperCase());
+        });
+        $("#i81").text(arr.join("++++"));
+        arr = $.map(arr, function (n, i) {
+            return (n.toLowerCase());
+        });
+
+        $("#i82").text(arr.join("----"));
+
+
+        /*   var dimensions = { width: 10, height: 15, length: 20 };
+           dimensions = $.map( dimensions, function( value, index ) {
+               return value * 2;
+           });
+           $("span").text(dimensions.join(", "));*/
+    });
+
+    function check(numbers) {
+        return numbers >= 54;
+    }
+
+    function mysome() {
+        document.getElementById("8").innerHTML = numbers.some(check);
+    }
+
+    function myevery() {
+        document.getElementById("9").innerHTML = numbers.every(check);
+    }
+
+</script>
+
+
+<!--
+
+
+<button onclick="is1000prime()">1000以内素数</button><br><br>
+
+<input type="text" id="inps"><br>
+<button onclick="isleapyear()">是否闰年</button><br><br>
+
+<p id="demo">输入元素进行排序。</p>
+<input type="text" id="p">
+<button onclick="sortnumber()">排序整数</button><br>
+
+<p id="demo2">税前收入</p><br>
+<input type="text" id="pre"><br>
+<button onclick="calculator()">税后</button><br>
+
+
+-->
+
+</body>
+</html>
