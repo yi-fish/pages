@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>timetable</title>
+    <style type="text/css">
+        .center{
+            position: absolute;
+            top: 50px;
+            left: 30%;
+            width: 100%;
+        }
+        upper-right {
+            font-style: normal;
+            display: block;
+            position: absolute;
+            top: 15px;
+            left: 67px;
+        }
+        left-lower {
+            font-style: normal;
+            display: block;
+            position: absolute;
+            top: 60px;
+            left: 9px;
+        }
+        th{
+            font-weight:normal;
+        }
+        td{
+            text-align: center;
+            width: 50px;
+            height: 40px;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        table,th,td{
+            border:1px,solid,black;
+        }
+        input{
+            border: none;
+            width: 50px;
+            height: 40px;
+
+        }
+        #star-six {
+            width: 100px;
+            height: 100px;
+            border: none;
+            position: relative;
+           }
+        #star-six::before {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            border-TOP: 100px solid #000;
+            border-left: 99px solid transparent;
+            content: "";
+            z-index:-1;
+
+         }
+        #star-six::after {
+             position: absolute;
+            left: 2px;
+             right: 0;
+             top: 0px;
+             bottom: 0;
+            border-TOP: 99px solid #fff;
+             border-left: 98px solid transparent;
+             content: "";
+            z-index:-1;
+             }
+        th[class=cut]:before {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 278px;
+            top: 30;
+            left: 10;
+            background-color: #000;
+            display: block;
+            transform: rotate(-47deg);
+            transform-origin: top;
+            -ms-transform: rotate(-75deg);
+            -ms-transform-origin: top;
+        }
+        </style>
+</head>
+<body>
+<div class="center">
+<table border="2" cellspacing="0"  >
+
+    <tr>
+
+        <th colspan="2" rowspan="2" >
+            <div ID="star-six">
+                <div >
+                <upper-right>星期</upper-right>
+                </div>
+                <left-lower>时间</left-lower>
+            </div>
+        </th>
+        <th colspan="2">星期一</th>
+        <th colspan="2">星期二</th>
+        <th colspan="2">星期三</th>
+        <th colspan="2">星期四</th>
+        <th colspan="2">星期五</th>
+    </tr>
+    <tr>
+        <td>科目</td>
+        <td>教师</td>
+        <td>科目</td>
+        <td>教师</td>
+        <td>科目</td>
+        <td>教师</td>
+        <td>科目</td>
+        <td>教师</td>
+        <td>科目</td>
+        <td>教师</td>
+    </tr>
+
+    <tr>
+        <th rowspan="4">上午</th>
+        <td>第一节</td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+
+    </tr>
+    <tr>
+        <td>第二节</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+    </tr>
+    <tr>
+        <td>第三节</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+    </tr>
+    <tr>
+        <td>第四节</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th colspan="12"></th>
+    </tr>
+    <tr>
+        <th rowspan="4">下午</th>
+        <td>第五节</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+    </tr>
+    <tr>
+        <td>第六节</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+    </tr>
+    <tr>
+        <td>第七节</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+    </tr>
+    <tr>
+        <td>第八节</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
